@@ -4,23 +4,23 @@ using namespace std;
 
 void readFromFile(){
     int size;
-    ifstream inputFile;
-    inputFile.open("studentData.txt", ios::in);
-    if(!inputFile.fail()){
-        cout << "NOTFAILED!!!\n";
+    fstream inputFile;
+    char file_name[100]="studentData";
+    strcat(file_name,".txt");
+    inputFile.open(file_name,ios::in);
+    if(!inputFile.is_open()){
+        cout << "ERROR: Could not open file\n";
+        return;
     }
     inputFile >> size;
     cout << size << '\n';
     vector<StudentHeap> sHeap;
-    for(int i = 0; i < size && !inputFile.eof(); ++i){
-        char line[30];
+    for(int i = 0; i < size && inputFile.good(); ++i){
         StudentHeap currStudent;
         inputFile >> currStudent.ID;
-        inputFile >> line;
-        currStudent.Name = line;
+        getline(inputFile >> ws, currStudent.Name, '\n');
         inputFile >> currStudent.GPA;
-        inputFile >> line;
-        currStudent.Department = line;
+        getline(inputFile >> ws, currStudent.Department, '\n');
         sHeap.push_back(currStudent);
         cout << currStudent.ID << '\n';
         cout << currStudent.Name << '\n';

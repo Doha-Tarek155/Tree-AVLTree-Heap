@@ -1,0 +1,96 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.23"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Assinment3DS",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "heapFunctions.cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-heapFunctions.cpp-Debug-4053eda64ac1d3e4f3b2.json",
+					"name" : "heapFunctions.cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main.cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main.cpp-Debug-3b876d66618cd8bdf9e0.json",
+					"name" : "main.cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "menues.cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-menues.cpp-Debug-e0b385d36196838853af.json",
+					"name" : "menues.cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "readFromFile.cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-readFromFile.cpp-Debug-d47ba36f1c6118c96904.json",
+					"name" : "readFromFile.cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "studentClass.cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-studentClass.cpp-Debug-62715ebe4363945079cd.json",
+					"name" : "studentClass.cpp",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/assigment/Assinment3DS/cmake-build-debug",
+		"source" : "C:/assigment/Assinment3DS"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

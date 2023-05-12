@@ -5,6 +5,7 @@ using namespace std;
 
 int main(){
     readFromFile();
+
     // char DSChoice;
     // while(true){
     //     menu1();
@@ -90,5 +91,5 @@ int main(){
     //         break;
     //     }
     // }
-    return 0;
+//    return 0;
 }
