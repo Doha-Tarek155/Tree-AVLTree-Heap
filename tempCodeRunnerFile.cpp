@@ -61,8 +61,6 @@ int main(){
                     printSortedDataMin();
                 } else if(minChoice == '3'){
                     returnToMainMenu = 1;
-                } else {
-                    cout << "Invalid choice.\n###Please choose from 1 to 3:)###\n";
                 }
             }
         } else if (DSChoice == '4') {
@@ -79,8 +77,6 @@ int main(){
                     printSortedDataMax();
                 } else if(maxChoice== '3'){
                     returnToMainMenu = 1;
-                } else {
-                    cout << "Invalid choice.\n###Please choose from 1 to 3:)###\n";
                 }
             }
         }
@@ -88,7 +84,7 @@ int main(){
             cout<<"Good luck );\n";
             return 0;
         } else {
-            cout << "Invalid choice.\n###Please choose from 1 to 5:)###\n";
+            cout << "Invalid choice.\nPlease choose from 1 to 5:)\n";
         }
     }
    return 0;
