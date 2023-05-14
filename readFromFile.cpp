@@ -11,6 +11,7 @@ vector<Student> readFromFile(){
     inputFile.open(file_name,ios::in);
     if(!inputFile.is_open()){
         cout << "ERROR: Could not open file\n";
+        return vector<Student>();
     }
     else{
         inputFile >> size;

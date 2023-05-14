@@ -1,11 +1,11 @@
 #include<bits/stdc++.h>
 #include"menues.cpp"
-#include"readFromFile.cpp"
+#include"heapFunctions.cpp"
+
 using namespace std;
 
 int main(){
-    readFromFile();
-
+    heap();
     // char DSChoice;
     // while(true){
     //     menu1();
