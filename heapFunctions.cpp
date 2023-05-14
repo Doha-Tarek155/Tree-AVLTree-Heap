@@ -2,18 +2,25 @@
 #include"readFromFile.cpp"
 using namespace std;
 
-vector<Student> SHeap = readFromFile();   
+vector<Student> SHeap = readFromFile();
 
 void addStudentToHeap(){
+    int id;
+    string name, department;
+    double gpa;
     Student addedStudentData;
     cout << "Enter Student ID: ";
-    cin >> addedStudentData.ID;
+    cin >> id;
+    addedStudentData.setID(id);
     cout << "Enter Student Name: ";
-    cin >> addedStudentData.Name;
+    cin >> name;
+    addedStudentData.setName(name);
     cout << "Enter Student GPA: ";
-    cin >> addedStudentData.GPA;
+    cin >> gpa;
+    addedStudentData.setGPA(gpa);
     cout << "Enter Student Department: ";
-    cin >> addedStudentData.Department;
+    cin >> department;
+    addedStudentData.setDepartment(department);
     SHeap.push_back(addedStudentData);
 }
 
