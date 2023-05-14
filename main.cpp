@@ -48,8 +48,8 @@ int main(){
                 }
             }
         } else if (DSChoice == '3') {
-            bool returnToMainMenu = 1;
-            while (true&&returnToMainMenu) {
+            bool returnToMainMenu = 0;
+            while (true&& !returnToMainMenu) {
                 menu3();
                 cout << "Enter your choice: ";
                 char minChoice;
@@ -58,26 +58,25 @@ int main(){
                     addStudentToHeap();
                 }
                 else if(minChoice == '2'){
-                    //print all students sorted by GPA
+                    printSortedDataMin();
                 } else if(minChoice == '3'){
-                    returnToMainMenu = 0;
+                    returnToMainMenu = 1;
                 }
             }
         } else if (DSChoice == '4') {
-            bool returnToMainMenu = 1;
-            while (true&&returnToMainMenu) {
+            bool returnToMainMenu = 0;
+            while (true&& !returnToMainMenu) {
                 char maxChoice;
                 menu3();
                 cout << "Enter your choice :";
                 cin >> maxChoice;
-                if (maxChoice) {
-                    if (maxChoice == '1') {
-                        addStudentToHeap();
-                    }
-                } else if(maxChoice=='2'){
-                    //print all students sorted by GPA
+                if (maxChoice == '1') {
+                    addStudentToHeap();
+                }
+                else if(maxChoice=='2'){
+                    printSortedDataMax();
                 } else if(maxChoice== '3'){
-                    returnToMainMenu = 0;
+                    returnToMainMenu = 1;
                 }
             }
         }
@@ -85,10 +84,7 @@ int main(){
             cout<<"Good luck );\n";
             return 0;
         } else {
-            cout << "Invalid choice.\nPlease choose from 1 to 5:)";
-            menu1();
-            cin >> DSChoice;
-            break;
+            cout << "Invalid choice.\nPlease choose from 1 to 5:)\n";
         }
     }
    return 0;
