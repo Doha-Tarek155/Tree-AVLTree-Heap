@@ -205,6 +205,39 @@ build studentClass.cpp.exe: CXX_EXECUTABLE_LINKER__studentClass.2ecpp_Debug CMak
   TARGET_IMPLIB = libstudentClass.cpp.dll.a
   TARGET_PDB = studentClass.cpp.exe.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target BST.cpp
+
+
+#############################################
+# Order-only phony target for BST.cpp
+
+build cmake_object_order_depends_target_BST.cpp: phony || CMakeFiles/BST.cpp.dir
+
+build CMakeFiles/BST.cpp.dir/BST.cpp.obj: CXX_COMPILER__BST.2ecpp_Debug C$:/assigment/Assinment3DS/BST.cpp || cmake_object_order_depends_target_BST.cpp
+  DEP_FILE = CMakeFiles\BST.cpp.dir\BST.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\BST.cpp.dir
+  OBJECT_FILE_DIR = CMakeFiles\BST.cpp.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target BST.cpp
+
+
+#############################################
+# Link the executable BST.cpp.exe
+
+build BST.cpp.exe: CXX_EXECUTABLE_LINKER__BST.2ecpp_Debug CMakeFiles/BST.cpp.dir/BST.cpp.obj
+  FLAGS = -g
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\BST.cpp.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = BST.cpp.exe
+  TARGET_IMPLIB = libBST.cpp.dll.a
+  TARGET_PDB = BST.cpp.exe.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -231,6 +264,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build BST.cpp: phony BST.cpp.exe
+
 build heapFunctions.cpp: phony heapFunctions.cpp.exe
 
 build main.cpp: phony main.cpp.exe
@@ -249,7 +284,7 @@ build studentClass.cpp: phony studentClass.cpp.exe
 #############################################
 # Folder: C:/assigment/Assinment3DS/cmake-build-debug
 
-build all: phony heapFunctions.cpp.exe main.cpp.exe menues.cpp.exe readFromFile.cpp.exe studentClass.cpp.exe
+build all: phony heapFunctions.cpp.exe main.cpp.exe menues.cpp.exe readFromFile.cpp.exe studentClass.cpp.exe BST.cpp.exe
 
 # =============================================================================
 # Built-in targets
