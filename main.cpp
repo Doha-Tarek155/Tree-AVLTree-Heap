@@ -42,7 +42,7 @@ int main(){
                     int id;
                     cout<<"ID: ";
                     cin>>id;
-                    bst.search(id);
+                    bst.searchStudent(id);
 
                 } else if(BSTChoice == '4') {
                     cout<<"Print "<<bst.sizeBST()<<" Students.\n";
@@ -73,12 +73,15 @@ int main(){
                         cin>>id;
                         bst.removeStudent(id);
                     } else if (AVLChoice == '3') {
-                        //Search student
+                        int id;
+                        cout<<"ID: ";
+                        cin>>id;
+                        avl.searchStudent(id);
                     } else if (AVLChoice == '4') {
-                        cout<<"Print "<<avl.sizeAVL()<<" Students.\n";
-                        avl.print();
+                        cout<<"Print "<<bst.sizeBST()<<" Students.\n";
+                        bst.print();
                         cout<<"Students per Departments:\n";
-                        avl.printDepartment();
+                        bst.printDepartment();
                     } else if (AVLChoice == '5') {
                         returnToMainMenu=1;
                         break;

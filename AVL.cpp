@@ -9,6 +9,8 @@ public:
     AVLNode* right;
     int height;
 
+
+
     AVLNode(Student student) : data(student) {
         this->left = NULL;
         this->right = NULL;
@@ -21,6 +23,10 @@ private:
     AVLNode *root;
     int size;
     void printAVL(AVLNode *root);
+    int ds;
+    int cs;
+    int it;
+    int is;
 
 public:
     AVL();
@@ -31,6 +37,11 @@ public:
     void removeStudent(int id);
     void searchStudent(int id);
     int sizeAVL();
+    bool search(int id);
+    int numIT();
+    int numCS();
+    int numIS();
+    int numDS();
 
 private:
     int getHeight(AVLNode* node);
@@ -43,47 +54,91 @@ private:
 AVL::AVL() {
     root = NULL;
     size = 0;
+    it=0;
+    is=0;
+    cs=0;
+    ds=0;
 }
-
+int AVL::numCS() {
+    return cs;
+}
+int AVL::numIS() {
+    return is;
+}int AVL::numIT() {
+    return it;
+}int AVL::numDS() {
+    return ds;
+}
 int AVL::sizeAVL() {
     return size;
 }
+
+bool AVL::search(int id) {
+    if (root == NULL) {
+        return 0;
+    }
+    else {
+        AVLNode* current = root;
+        while (current != NULL) {
+            if (current->data.getID() == id) {
+                return 1;
+            } else if (current->data.getID() > id) {
+                current = current->left;
+            } else {
+                current = current->right;
+            }
+        }
+        return 0;
+    }
+}
 void AVL::printDepartment() {
-    map<string, int> depsFreqency = getDepsFreq();
-    cout << "IT Department contains: " << depsFreqency["IT"] << '\n';
-    cout << "DS Department contains: " << depsFreqency["DS"] << '\n';
-    cout << "CS Department contains: " << depsFreqency["CS"] << '\n';
-    cout << "IS Department contains: " << depsFreqency["IS"] << '\n';
+
+    cout << "IT Department contains: " << numIT() << '\n';
+    cout << "DS Department contains: " << numDS() << '\n';
+    cout << "CS Department contains: " << numCS() << '\n';
+    cout << "IS Department contains: " << numIS() << '\n';
 }
 
 void AVL::addStudent(int id, string name, double gpa, string department) {
-    Student student(id, name, gpa, department);
-    AVLNode* newNode = new AVLNode(student);
+    if(!search(id)) {
+        if(department=="CS"){
+            cs++;
+        }else if(department=="DS"){
+            ds++;
+        }else if(department=="IS"){
+            is++;
+        }else if(department=="IT"){
+            it++;
+        }
+        Student student(id, name, gpa, department);
+        AVLNode *newNode = new AVLNode(student);
 
-    if (root == NULL) {
-        root = newNode;
-    } else {
-        AVLNode* current = root;
-        while (current != NULL) {
-            if (current->data.getID() > newNode->data.getID()) {
-                if (current->left == NULL) {
-                    current->left = newNode;
-                    break;
-                } else {
-                    current = current->left;
-                }
-            } else if (current->data.getID() < newNode->data.getID()) {
-                if (current->right == NULL) {
-                    current->right = newNode;
-                    break;
-                } else {
-                    current = current->right;
+        if (root == NULL) {
+            root = newNode;
+        } else {
+            AVLNode *current = root;
+            while (current != NULL) {
+                if (current->data.getID() > newNode->data.getID()) {
+                    if (current->left == NULL) {
+                        current->left = newNode;
+                        break;
+                    } else {
+                        current = current->left;
+                    }
+                } else if (current->data.getID() < newNode->data.getID()) {
+                    if (current->right == NULL) {
+                        current->right = newNode;
+                        break;
+                    } else {
+                        current = current->right;
+                    }
                 }
             }
+            root = balance(root);
         }
-        root = balance(root);
+        size++;
     }
-    size++;
+
 }
 
 void AVL::add_student() {
@@ -101,7 +156,7 @@ void AVL::add_student() {
     cout << "Enter Student Department: ";
     getline(cin, department);
     addStudent(id, name, gpa, department);
-    cout<<"The student is added.\n";
+
 }
 
 
@@ -196,16 +251,13 @@ void AVL::printAVL(AVLNode *root) {
 
     if (root != NULL) {
         printAVL(root->left);
-        cout << "ID: " << root->data.getID() << endl;
-        cout << "Name: " << root->data.getName() << endl;
-        cout << "GPA: " << root->data.getGPA() << endl;
-        cout << "Department: " << root->data.getDepartment() << endl;
+        cout << "[" << root->data.getID() << ", " << root->data.getName() << ", " << root->data.getGPA() << ", "
+             << root->data.getDepartment() << "]" << endl;
         printAVL(root->right);
     }
 }
 
 void AVL::print() {
-//    cout<<"Print " << size <<"S tudents."<<endl;
     printAVL(root);
 }
 
@@ -309,6 +361,7 @@ void searchStudentAVL(){
     cin >> id;
     avl.searchStudent(id);
 }
+
 //
 //int main() {
 //    addStudentAVL();
