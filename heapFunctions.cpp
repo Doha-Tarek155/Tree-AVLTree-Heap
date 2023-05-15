@@ -38,7 +38,7 @@ void minHeapify(vector<Student>& VS, int n, int i)
         smallest = r;
 
     if (smallest != i) {
-        swap(VS[i], VS[smallest]); 
+        swap(VS[i], VS[smallest]);
         minHeapify(VS, n, smallest);
     }
 }
@@ -59,10 +59,10 @@ void printSortedDataMin(){
     minHeapSort(SHeap, n);
     for(int i = 0; i < n; ++i) {
         cout <<'[' << SHeap[i].getID() << ", "  << SHeap[i].getName() << ", " << SHeap[i].getGPA() <<
-        ", " << SHeap[i].getDepartment() << "]\n";
+             ", " << SHeap[i].getDepartment() << "]\n";
     }
-     map<string, int> depsFreqency = getDepsFreq();
-     
+    map<string, int> depsFreqency = getDepsFreq();
+
     cout << "IT Department contains: " << depsFreqency["IT"] << '\n';
     cout << "DS Department contains: " << depsFreqency["DS"] << '\n';
     cout << "CS Department contains: " << depsFreqency["CS"] << '\n';
@@ -84,7 +84,7 @@ void maxHeapify(vector<Student>& VS, int n, int i)
         mx = r;
 
     if (mx != i) {
-        swap(VS[i], VS[mx]); 
+        swap(VS[i], VS[mx]);
         maxHeapify(VS, n, mx);
     }
 }
@@ -105,13 +105,12 @@ void printSortedDataMax(){
     maxHeapSort(SHeap, n);
     for(int i = 0; i < n; ++i) {
         cout <<'[' << SHeap[i].getID() << ", "  << SHeap[i].getName() << ", " << SHeap[i].getGPA()<<
-        ", " << SHeap[i].getDepartment() << "]\n";
+             ", " << SHeap[i].getDepartment() << "]\n";
     }
     map<string, int> depsFreqency = getDepsFreq();
-    
+
     cout << "IT Department contains: " << depsFreqency["IT"] << '\n';
     cout << "DS Department contains: " << depsFreqency["DS"] << '\n';
     cout << "CS Department contains: " << depsFreqency["CS"] << '\n';
     cout << "IS Department contains: " << depsFreqency["IS"] << '\n';
 }
-
