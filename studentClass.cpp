@@ -64,23 +64,47 @@ string Student::getDepartment() {
     return Department;
 }
 
-map<string, int> depsFreq = {
+map<string, float> minDepsFreq = {
+        {"IT", 0},
+        {"CS", 0},
+        {"DS", 0},
+        {"IS", 0}
+};
+map<string, float> maxDepsFreq = {
         {"IT", 0},
         {"CS", 0},
         {"DS", 0},
         {"IS", 0}
 };
 
-void editDepsFreqData(string dep){
-    depsFreq[dep]++;
+void editMinDepsFreqData(string dep){
+    minDepsFreq[dep]++;
 }
 
-map<string, int>& getDepsFreq(){
-    return depsFreq;
+void editMaxDepsFreqData(string dep){
+    maxDepsFreq[dep]++;
+}
+
+map<string, float>& getMinDepsFreq(){
+    return minDepsFreq;
+}
+
+map<string, float>& getMaxDepsFreq(){
+    return maxDepsFreq;
 }
 
 vector<Student> readFromFile()
 {
+    minDepsFreq["IT"] = 0;
+    minDepsFreq["IS"] = 0;
+    minDepsFreq["CS"] = 0;
+    minDepsFreq["DS"] = 0;
+
+    maxDepsFreq["IT"] = 0;
+    maxDepsFreq["IS"] = 0;
+    maxDepsFreq["CS"] = 0;
+    maxDepsFreq["DS"] = 0;
+
     int size;
     fstream inputFile;
     char file_name[100] = "studentData";
@@ -108,7 +132,8 @@ vector<Student> readFromFile()
             inputFile >> gpa;
             currStudent.setGPA(gpa);
             getline(inputFile >> ws, department, '\n');
-            depsFreq[department]++;
+            minDepsFreq[department]++;
+            maxDepsFreq[department]++;
             currStudent.setDepartment(department);
             student.push_back(currStudent);
         }
@@ -117,4 +142,3 @@ vector<Student> readFromFile()
     }
 }
 #endif
-

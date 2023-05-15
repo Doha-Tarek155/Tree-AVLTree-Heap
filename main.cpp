@@ -88,8 +88,7 @@ int main(){
                     }
                 }
             }
-
-        } else if (DSChoice == '3') {
+} else if (DSChoice == '3') {
             bool returnToMainMenu = 0;
             while (true&& !returnToMainMenu) {
                 menu3();
@@ -97,7 +96,7 @@ int main(){
                 char minChoice;
                 cin >> minChoice;
                 if (minChoice == '1') {
-                    addStudentToHeap();
+                    addStudentToMinHeap();
                 }
                 else if(minChoice == '2'){
                     printSortedDataMin();
@@ -112,10 +111,10 @@ int main(){
             while (true&& !returnToMainMenu) {
                 char maxChoice;
                 menu3();
-                cout << "Enter your choice :";
+                cout << "Enter your choice: ";
                 cin >> maxChoice;
                 if (maxChoice == '1') {
-                    addStudentToHeap();
+                    addStudentToMaxHeap();
                 }
                 else if(maxChoice=='2'){
                     printSortedDataMax();
@@ -127,11 +126,10 @@ int main(){
             }
         }
         else if (DSChoice == '5') {
-            cout<<"Good luck );\n";
+            cout<<"Good luck:)\n";
             return 0;
         } else {
-            cout << "Invalid choice.\nPlease choose from 1 to 5:)\n";
-            cout << "Invalid choice.\n###Please choose from 1 to 5:)###\n";
+            cout << "\nInvalid choice.\n###Please choose from 1 to 5:)###\n\n";
         }
     }
     return 0;

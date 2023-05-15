@@ -2,15 +2,20 @@
 #include"studentClass.cpp"
 using namespace std;
 
-vector<Student> SHeap = readFromFile();
+vector<Student> SMinHeap = readFromFile();
+vector<Student> SMaxHeap = readFromFile();
 
-void addStudentToHeap(){
+void addStudentToMinHeap(){
     int id;
     string name, department;
     double gpa;
     Student addedStudentData;
     cout << "Enter Student ID: ";
     cin >> id;
+    while(id < 0 || id > 101){
+        cout << "Invalid ID);\nEnter ID from 1 to 100: ";
+        cin >> id;
+    }
     addedStudentData.setID(id);
     cout << "Enter Student Name: ";
     cin >> ws;
@@ -18,12 +23,55 @@ void addStudentToHeap(){
     addedStudentData.setName(name);
     cout << "Enter Student GPA: ";
     cin >> gpa;
+    while(gpa < 0 || gpa > 4){
+        cout << "Invalid GPA);\nEnter GPA from 0 to 4: ";
+        cin >> gpa;
+    }
     addedStudentData.setGPA(gpa);
     cout << "Enter Student Department: ";
     cin >> department;
-    editDepsFreqData(department);
+    while(department != "CS" &&department != "IS" &&department != "DS" && department != "IT" ){
+        cout << "Invalid Department);\n Choose department from those:(CS, IS, DS, IT): ";
+        cin >> department;
+    }
+    editMinDepsFreqData(department);
     addedStudentData.setDepartment(department);
-    SHeap.push_back(addedStudentData);
+    SMinHeap.push_back(addedStudentData);
+    cout << "##The student is added.##\n";
+}
+
+void addStudentToMaxHeap(){
+    int id;
+    string name, department;
+    double gpa;
+    Student addedStudentData;
+    cout << "Enter Student ID: ";
+    cin >> id;
+    while(id < 0  || id > 101){
+        cout << "Invalid ID);\nEnter ID from 1 to 100: ";
+        cin >> id;
+    }
+    addedStudentData.setID(id);
+    cout << "Enter Student Name: ";
+    cin >> ws;
+    getline(cin, name);
+    addedStudentData.setName(name);
+    cout << "Enter Student GPA: ";
+    cin >> gpa;
+    while(gpa < 0 || gpa > 4){
+        cout << "Invalid GPA);\nEnter GPA from 0 to 4: ";
+        cin >> gpa;
+    }
+    addedStudentData.setGPA(gpa);
+    cout << "Enter Student Department: ";
+    cin >> department;
+    while(department != "CS" &&department != "IS" &&department != "DS" && department != "IT" ){
+        cout << "Invalid Department);\n Choose department from those:(CS, IS, DS, IT): ";
+        cin >> department;
+    }
+    editMaxDepsFreqData(department);
+    addedStudentData.setDepartment(department);
+    SMaxHeap.push_back(addedStudentData);
     cout << "##The student is added.##\n";
 }
 
@@ -55,18 +103,17 @@ void minHeapSort(vector<Student>& VS, int n)
 }
 
 void printSortedDataMin(){
-    int n = SHeap.size();
-    minHeapSort(SHeap, n);
+    int n = SMinHeap.size();
+    minHeapSort(SMinHeap, n);
     for(int i = 0; i < n; ++i) {
-        cout <<'[' << SHeap[i].getID() << ", "  << SHeap[i].getName() << ", " << SHeap[i].getGPA() <<
-             ", " << SHeap[i].getDepartment() << "]\n";
+        cout <<'[' << SMinHeap[i].getID() << ", "  << SMinHeap[i].getName() << ", " << SMinHeap[i].getGPA() <<
+            ", " << SMinHeap[i].getDepartment() << "]\n";
     }
-    map<string, int> depsFreqency = getDepsFreq();
-
-    cout << "IT Department contains: " << depsFreqency["IT"] << '\n';
-    cout << "DS Department contains: " << depsFreqency["DS"] << '\n';
+    map<string, float> depsFreqency = getMinDepsFreq();
     cout << "CS Department contains: " << depsFreqency["CS"] << '\n';
     cout << "IS Department contains: " << depsFreqency["IS"] << '\n';
+    cout << "IT Department contains: " << depsFreqency["IT"] << '\n';
+    cout << "DS Department contains: " << depsFreqency["DS"] << '\n';
 }
 
 //#############################################################################################################################
@@ -101,16 +148,16 @@ void maxHeapSort(vector<Student>& VS, int n)
 }
 
 void printSortedDataMax(){
-    int n = SHeap.size();
-    maxHeapSort(SHeap, n);
+    int n = SMaxHeap.size();
+    maxHeapSort(SMaxHeap, n);
     for(int i = 0; i < n; ++i) {
-        cout <<'[' << SHeap[i].getID() << ", "  << SHeap[i].getName() << ", " << SHeap[i].getGPA()<<
-             ", " << SHeap[i].getDepartment() << "]\n";
+        cout <<'[' << SMaxHeap[i].getID() << ", "  << SMaxHeap[i].getName() << ", " << SMaxHeap[i].getGPA()<<
+            ", " << SMaxHeap[i].getDepartment() << "]\n";
     }
-    map<string, int> depsFreqency = getDepsFreq();
+    map<string, float> depsFreqency = getMaxDepsFreq();
 
-    cout << "IT Department contains: " << depsFreqency["IT"] << '\n';
-    cout << "DS Department contains: " << depsFreqency["DS"] << '\n';
     cout << "CS Department contains: " << depsFreqency["CS"] << '\n';
     cout << "IS Department contains: " << depsFreqency["IS"] << '\n';
+    cout << "IT Department contains: " << depsFreqency["IT"] << '\n';
+    cout << "DS Department contains: " << depsFreqency["DS"] << '\n';
 }
