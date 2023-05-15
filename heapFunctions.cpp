@@ -5,6 +5,64 @@ using namespace std;
 vector<Student> SMinHeap = readFromFile();
 vector<Student> SMaxHeap = readFromFile();
 
+
+bool minCheckIfIDExists(int sid){
+    for(int i = 0; i < SMinHeap.size(); ++i){
+            if(sid == SMinHeap[i].getID()){
+                cout << "this ID is already exist...Enter another one:) ";
+                return 1;
+            }
+        }
+    return 0;
+}
+bool maxCheckIfIDExists(int sid){
+    for(int i = 0; i < SMaxHeap.size(); ++i){
+            if(sid == SMaxHeap[i].getID()){
+                cout << "this ID is already exist...Enter another one:) ";
+                return 1;
+            }
+        }
+    return 0;
+}
+
+void addStudentToMaxHeap(){
+    int id;
+    string name, department;
+    double gpa;
+    Student addedStudentData;
+    cout << "Enter Student ID: ";
+    cin >> id;
+    while(id < 0  || id > 101){
+        cout << "Invalid ID);\nEnter ID from 1 to 100: ";
+        cin >> id;
+    }
+    while(maxCheckIfIDExists(id)){
+        cin >> id;
+    }
+    addedStudentData.setID(id);
+    cout << "Enter Student Name: ";
+    cin >> ws;
+    getline(cin, name);
+    addedStudentData.setName(name);
+    cout << "Enter Student GPA: ";
+    cin >> gpa;
+    while(gpa < 0 || gpa > 4){
+        cout << "Invalid GPA);\nEnter GPA from 0 to 4: ";
+        cin >> gpa;
+    }
+    addedStudentData.setGPA(gpa);
+    cout << "Enter Student Department: ";
+    cin >> department;
+    while(department != "CS" &&department != "IS" &&department != "DS" && department != "IT" ){
+        cout << "Invalid Department);\n Choose department from those:(CS, IS, DS, IT): ";
+        cin >> department;
+    }
+    editMaxDepsFreqData(department);
+    addedStudentData.setDepartment(department);
+    SMaxHeap.push_back(addedStudentData);
+    cout << "##The student is added.##\n";
+}
+
 void addStudentToMinHeap(){
     int id;
     string name, department;
@@ -14,6 +72,9 @@ void addStudentToMinHeap(){
     cin >> id;
     while(id < 0 || id > 101){
         cout << "Invalid ID);\nEnter ID from 1 to 100: ";
+        cin >> id;
+    }
+        while(minCheckIfIDExists(id)){
         cin >> id;
     }
     addedStudentData.setID(id);
@@ -40,40 +101,6 @@ void addStudentToMinHeap(){
     cout << "##The student is added.##\n";
 }
 
-void addStudentToMaxHeap(){
-    int id;
-    string name, department;
-    double gpa;
-    Student addedStudentData;
-    cout << "Enter Student ID: ";
-    cin >> id;
-    while(id < 0  || id > 101){
-        cout << "Invalid ID);\nEnter ID from 1 to 100: ";
-        cin >> id;
-    }
-    addedStudentData.setID(id);
-    cout << "Enter Student Name: ";
-    cin >> ws;
-    getline(cin, name);
-    addedStudentData.setName(name);
-    cout << "Enter Student GPA: ";
-    cin >> gpa;
-    while(gpa < 0 || gpa > 4){
-        cout << "Invalid GPA);\nEnter GPA from 0 to 4: ";
-        cin >> gpa;
-    }
-    addedStudentData.setGPA(gpa);
-    cout << "Enter Student Department: ";
-    cin >> department;
-    while(department != "CS" &&department != "IS" &&department != "DS" && department != "IT" ){
-        cout << "Invalid Department);\n Choose department from those:(CS, IS, DS, IT): ";
-        cin >> department;
-    }
-    editMaxDepsFreqData(department);
-    addedStudentData.setDepartment(department);
-    SMaxHeap.push_back(addedStudentData);
-    cout << "##The student is added.##\n";
-}
 
 void minHeapify(vector<Student>& VS, int n, int i)
 {
