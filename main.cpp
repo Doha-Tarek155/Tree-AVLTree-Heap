@@ -1,95 +1,169 @@
 #include<bits/stdc++.h>
 #include"menues.cpp"
 #include"heapFunctions.cpp"
-
+#include "BST.cpp"
 using namespace std;
 
-int main(){
+int main() {
     char DSChoice;
-    while(true){
+    BST bst;
+    vector<Student> students = readFromFile();
+    for(auto student: students) {
+        bst.addStudent(student.getID(), student.getName(), student.getGPA(), student.getDepartment());
+    }
+
+    while (true) {
         menu1();
         cout << "Enter your choice: ";
         cin >> DSChoice;
-        if(DSChoice == '1'){
-            char BSTChoice;
-            menu2();
-            cout << "Enter your choice :";
-            cin >> BSTChoice;
-            if(BSTChoice == '1') {
+        switch (DSChoice) {
+            case '1': {
+                bool returnToMainMenu = 0;
+                while (true&& !returnToMainMenu) {
+                    char BSTChoice;
+                    menu2();
+                    cout << "Enter your choice :";
+                    cin >> BSTChoice;
+                    switch (BSTChoice) {
+                        case '1': {
+                            bst.add_student();
+                            break;
+                        }
+                        case '2': {
+                            int id;
+                            cout<<"ID: ";
+                            cin>>id;
+                            bst.removeStudent(id);
+                            break;
+                        }
+                        case '3': {
+                            int id;
+                            cout<<"ID: ";
+                            cin>>id;
+                            bst.search(id);
+                            break;
+                        }
+                        case '4': {
+                            cout<<"Print "<<bst.sizeBST()<<" Students.\n";
+                            bst.print();
+                            cout<<"Students per Departments:\n";
+                            bst.printDepartment();
+                            break;
+                        }
+                        case '5': {
+                            returnToMainMenu = 1;
+                            break;
+                        }
+                        default: {
+                            cout << "Invalid choice.\n###Please choose from 1 to 5:)###\n";
+                            break;
+                        }
+                    }
+                    break;
+                }
+                }
 
-            } else if(BSTChoice == '2') {
-                
-            } else if(BSTChoice == '3') {
-                
-            } else if(BSTChoice == '4') {
-                
-            } else if(BSTChoice == '5') {
-                break;
-            }
-        } else if (DSChoice == '2') {
-            while (true) {
-                menu2();
+            case '2': {
                 char AVLChoice;
-                cout << "Enter your choice :";
-                cin >> AVLChoice;
-                if (AVLChoice) {
-                    if (AVLChoice == '1') {
-                        //Add student
-
-                    } else if (AVLChoice == '2') {
-                        //Remove student
-                    } else if(AVLChoice == '3'){
-                        //Search student
-                    } else if(AVLChoice == '4'){
-                        //print all students sorted by ID
-                    } else if(AVLChoice == '5'){
+                while (true) {
+                    menu2();
+                    cout << "Enter your choice :";
+                    cin >> AVLChoice;
+                    switch (AVLChoice) {
+                        case '1': {
+//                            addStudentToAVL();
+                            break;
+                        }
+                        case '2': {
+//                            removeStudentFromAVL();
+                            break;
+                        }
+                        case '3': {
+//                            searchStudentAVL();
+                            break;
+                        }
+                        case '4': {
+//                            PrintAVL();
+                            break;
+                        }
+                        case '5': {
+                            break;
+                        }
+                        default: {
+                            cout << "Invalid choice.\n###Please choose from 1 to 5:)###\n";
+                            break;
+                        }
+                    }
+                    if (AVLChoice == '5') {
                         break;
                     }
                 }
+                break;
             }
-        } else if (DSChoice == '3') {
-            bool returnToMainMenu = 0;
-            while (true&& !returnToMainMenu) {
-                menu3();
-                cout << "Enter your choice: ";
-                char minChoice;
-                cin >> minChoice;
-                if (minChoice == '1') {
-                    addStudentToHeap();
+            case '3': {
+                bool returnToMainMenu = 0;
+                while (true&& !returnToMainMenu) {
+                    menu3();
+                    cout << "Enter your choice: ";
+                    char minChoice;
+                    cin >> minChoice;
+                    switch (minChoice) {
+                        case '1': {
+                            addStudentToHeap();
+                            break;
+                        }
+                        case '2': {
+                            printSortedDataMin();
+                            break;
+                        }
+                        case '3': {
+                            returnToMainMenu = 1;
+                            break;
+                        }
+                        default: {
+                            cout << "Invalid choice.\n###Please choose from 1 to 3:)###\n";
+                            break;
+                        }
+                    }
                 }
-                else if(minChoice == '2'){
-                    printSortedDataMin();
-                } else if(minChoice == '3'){
-                    returnToMainMenu = 1;
-                } else {
-                    cout << "Invalid choice.\n###Please choose from 1 to 3:)###\n";
-                }
+                break;
             }
-        } else if (DSChoice == '4') {
-            bool returnToMainMenu = 0;
-            while (true&& !returnToMainMenu) {
-                char maxChoice;
-                menu3();
-                cout << "Enter your choice :";
-                cin >> maxChoice;
-                if (maxChoice == '1') {
-                    addStudentToHeap();
+            case '4': {
+                bool returnToMainMenu = 0;
+                while (true&& !returnToMainMenu) {
+                    char maxChoice;
+                    menu3();
+                    cout << "Enter your choice :";
+                    cin >> maxChoice;
+                    switch (maxChoice) {
+                        case '1': {
+                            addStudentToHeap();
+                            break;
+                        }
+                        case '2': {
+                            printSortedDataMax();
+                            break;
+                        }
+                        case '3': {
+                            returnToMainMenu = 1;
+                            break;
+                        }
+                        default: {
+                            cout << "Invalid choice.\n###Please choose from 1 to 3:)###\n";
+                            break;
+                        }
+                    }
                 }
-                else if(maxChoice=='2'){
-                    printSortedDataMax();
-                } else if(maxChoice== '3'){
-                    returnToMainMenu = 1;
-                } else {
-                    cout << "Invalid choice.\n###Please choose from 1 to 3:)###\n";
-                }
+                break;
             }
-        }
-        else if (DSChoice == '5') {
-            cout<<"Good luck );\n";
-            return 0;
-        } else {
-            cout << "Invalid choice.\n###Please choose from 1 to 5:)###\n";
+            case '5': {
+                cout << "Good luck :);\n";
+                return 0;
+            }
+            default: {
+                cout << "Invalid choice.\n###Please choose from 1 to 5:)###\n";
+                break;
+            }
         }
     }
-   return 0;
 }

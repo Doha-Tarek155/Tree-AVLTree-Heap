@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include"readFromFile.cpp"
+#include"studentClass.cpp"
 using namespace std;
 
 vector<Student> SHeap = readFromFile();
