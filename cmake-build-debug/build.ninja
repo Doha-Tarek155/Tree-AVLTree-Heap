@@ -140,39 +140,6 @@ build menues.cpp.exe: CXX_EXECUTABLE_LINKER__menues.2ecpp_Debug CMakeFiles/menue
   TARGET_PDB = menues.cpp.exe.dbg
 
 # =============================================================================
-# Object build statements for EXECUTABLE target readFromFile.cpp
-
-
-#############################################
-# Order-only phony target for readFromFile.cpp
-
-build cmake_object_order_depends_target_readFromFile.cpp: phony || CMakeFiles/readFromFile.cpp.dir
-
-build CMakeFiles/readFromFile.cpp.dir/readFromFile.cpp.obj: CXX_COMPILER__readFromFile.2ecpp_Debug C$:/assigment/Assinment3DS/readFromFile.cpp || cmake_object_order_depends_target_readFromFile.cpp
-  DEP_FILE = CMakeFiles\readFromFile.cpp.dir\readFromFile.cpp.obj.d
-  FLAGS = -g -std=gnu++14
-  OBJECT_DIR = CMakeFiles\readFromFile.cpp.dir
-  OBJECT_FILE_DIR = CMakeFiles\readFromFile.cpp.dir
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target readFromFile.cpp
-
-
-#############################################
-# Link the executable readFromFile.cpp.exe
-
-build readFromFile.cpp.exe: CXX_EXECUTABLE_LINKER__readFromFile.2ecpp_Debug CMakeFiles/readFromFile.cpp.dir/readFromFile.cpp.obj
-  FLAGS = -g
-  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
-  OBJECT_DIR = CMakeFiles\readFromFile.cpp.dir
-  POST_BUILD = cd .
-  PRE_LINK = cd .
-  TARGET_FILE = readFromFile.cpp.exe
-  TARGET_IMPLIB = libreadFromFile.cpp.dll.a
-  TARGET_PDB = readFromFile.cpp.exe.dbg
-
-# =============================================================================
 # Object build statements for EXECUTABLE target studentClass.cpp
 
 
@@ -238,6 +205,39 @@ build BST.cpp.exe: CXX_EXECUTABLE_LINKER__BST.2ecpp_Debug CMakeFiles/BST.cpp.dir
   TARGET_IMPLIB = libBST.cpp.dll.a
   TARGET_PDB = BST.cpp.exe.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target AVL.cpp
+
+
+#############################################
+# Order-only phony target for AVL.cpp
+
+build cmake_object_order_depends_target_AVL.cpp: phony || CMakeFiles/AVL.cpp.dir
+
+build CMakeFiles/AVL.cpp.dir/AVL.cpp.obj: CXX_COMPILER__AVL.2ecpp_Debug C$:/assigment/Assinment3DS/AVL.cpp || cmake_object_order_depends_target_AVL.cpp
+  DEP_FILE = CMakeFiles\AVL.cpp.dir\AVL.cpp.obj.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles\AVL.cpp.dir
+  OBJECT_FILE_DIR = CMakeFiles\AVL.cpp.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target AVL.cpp
+
+
+#############################################
+# Link the executable AVL.cpp.exe
+
+build AVL.cpp.exe: CXX_EXECUTABLE_LINKER__AVL.2ecpp_Debug CMakeFiles/AVL.cpp.dir/AVL.cpp.obj
+  FLAGS = -g
+  LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  OBJECT_DIR = CMakeFiles\AVL.cpp.dir
+  POST_BUILD = cd .
+  PRE_LINK = cd .
+  TARGET_FILE = AVL.cpp.exe
+  TARGET_IMPLIB = libAVL.cpp.dll.a
+  TARGET_PDB = AVL.cpp.exe.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -264,6 +264,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 # Target aliases.
 
+build AVL.cpp: phony AVL.cpp.exe
+
 build BST.cpp: phony BST.cpp.exe
 
 build heapFunctions.cpp: phony heapFunctions.cpp.exe
@@ -271,8 +273,6 @@ build heapFunctions.cpp: phony heapFunctions.cpp.exe
 build main.cpp: phony main.cpp.exe
 
 build menues.cpp: phony menues.cpp.exe
-
-build readFromFile.cpp: phony readFromFile.cpp.exe
 
 build studentClass.cpp: phony studentClass.cpp.exe
 
@@ -284,7 +284,7 @@ build studentClass.cpp: phony studentClass.cpp.exe
 #############################################
 # Folder: C:/assigment/Assinment3DS/cmake-build-debug
 
-build all: phony heapFunctions.cpp.exe main.cpp.exe menues.cpp.exe readFromFile.cpp.exe studentClass.cpp.exe BST.cpp.exe
+build all: phony heapFunctions.cpp.exe main.cpp.exe menues.cpp.exe studentClass.cpp.exe BST.cpp.exe AVL.cpp.exe
 
 # =============================================================================
 # Built-in targets

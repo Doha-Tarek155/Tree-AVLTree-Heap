@@ -48,8 +48,15 @@
 			[
 				{
 					"directoryIndex" : 0,
+					"id" : "AVL.cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-AVL.cpp-Debug-9cbac8674d64840d2e0c.json",
+					"name" : "AVL.cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "BST.cpp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-BST.cpp-Debug-7eb2522f3ff087493259.json",
+					"jsonFile" : "target-BST.cpp-Debug-6bea724b73e464cf337f.json",
 					"name" : "BST.cpp",
 					"projectIndex" : 0
 				},
@@ -76,15 +83,8 @@
 				},
 				{
 					"directoryIndex" : 0,
-					"id" : "readFromFile.cpp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-readFromFile.cpp-Debug-d47ba36f1c6118c96904.json",
-					"name" : "readFromFile.cpp",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
 					"id" : "studentClass.cpp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-studentClass.cpp-Debug-62715ebe4363945079cd.json",
+					"jsonFile" : "target-studentClass.cpp-Debug-099e756d122fd2ad0ac7.json",
 					"name" : "studentClass.cpp",
 					"projectIndex" : 0
 				}

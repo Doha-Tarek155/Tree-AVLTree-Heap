@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "readFromFile.cpp.exe"
+			"path" : "BST.cpp.exe"
 		},
 		{
-			"path" : "readFromFile.cpp.pdb"
+			"path" : "BST.cpp.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 8,
+				"line" : 9,
 				"parent" : 0
 			}
 		]
@@ -59,7 +59,7 @@
 			]
 		}
 	],
-	"id" : "readFromFile.cpp::@6890427a1f51a3e7e1df",
+	"id" : "BST.cpp::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -79,8 +79,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "readFromFile.cpp",
-	"nameOnDisk" : "readFromFile.cpp.exe",
+	"name" : "BST.cpp",
+	"nameOnDisk" : "BST.cpp.exe",
 	"paths" : 
 	{
 		"build" : ".",
@@ -101,7 +101,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "readFromFile.cpp",
+			"path" : "BST.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],

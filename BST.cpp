@@ -202,42 +202,41 @@ void BST::add_student() {
     cout << "Enter Student Department: ";
     getline(cin, department);
     addStudent(id, name, gpa, department);
-    editDepsFreqData(department);
+//    editDepsFreqData(department);
     cout<<"The student is added.\n";
-
 }
 
-void bstMenu() {
-    BST bst; // Create an instance of the BST class
-
-    int choice;
-    while (true) {
-        cout << "Choose one of the following options:" << endl;
-        cout << "1. Add student" << endl;
-        cout << "2. Remove student" << endl;
-        cout << "3. Search student" << endl;
-        cout << "4. Print All (sorted by id)" << endl;
-        cout << "5. Return to main menu" << endl;
-        cout << "Enter your choice (1-5): ";
-        cin >> choice;
-
-        switch (choice) {
-            case 1:
-                bst.add_student();
-                break;
-            case 2:
-                // Code for removing a student
-                break;
-            case 3:
-                // Code for searching a student
-                break;
-            case 4:
-                bst.print(); // Print all students sorted by id
-                break;
-            case 5:
-                return; // Return to main menu
-            default:
-                cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
-        }
-    }
-}
+//void bstMenu() {
+//    BST bst; // Create an instance of the BST class
+//
+//    int choice;
+//    while (true) {
+//        cout << "Choose one of the following options:" << endl;
+//        cout << "1. Add student" << endl;
+//        cout << "2. Remove student" << endl;
+//        cout << "3. Search student" << endl;
+//        cout << "4. Print All (sorted by id)" << endl;
+//        cout << "5. Return to main menu" << endl;
+//        cout << "Enter your choice (1-5): ";
+//        cin >> choice;
+//
+//        switch (choice) {
+//            case 1:
+//                bst.add_student();
+//                break;
+//            case 2:
+//                // Code for removing a student
+//                break;
+//            case 3:
+//                // Code for searching a student
+//                break;
+//            case 4:
+//                bst.print(); // Print all students sorted by id
+//                break;
+//            case 5:
+//                return; // Return to main menu
+//            default:
+//                cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
+//        }
+//    }
+//}

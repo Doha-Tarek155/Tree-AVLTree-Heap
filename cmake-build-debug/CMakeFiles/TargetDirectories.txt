@@ -1,8 +1,8 @@
 C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/heapFunctions.cpp.dir
 C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/main.cpp.dir
 C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/menues.cpp.dir
-C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/readFromFile.cpp.dir
 C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/studentClass.cpp.dir
 C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/BST.cpp.dir
+C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/AVL.cpp.dir
 C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/assigment/Assinment3DS/cmake-build-debug/CMakeFiles/rebuild_cache.dir
