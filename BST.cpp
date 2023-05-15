@@ -17,55 +17,103 @@ private:
     int size;
     BSTNode *root;
     void printBST(BSTNode *root);
+    int ds;
+    int cs;
+    int it;
+    int is;
 
 public:
     BST();
-    void addStudent(int id, string name, double gpa, string department);
+
+    bool addStudent(int id, string name, double gpa, string department);
     void add_student();
     void print();
     void printDepartment();
     void removeStudent(int id);
-    void search(int id);
+    void searchStudent(int id);
+    bool search(int id);
     int sizeBST();
+    int numIT();
+    int numCS();
+    int numIS();
+    int numDS();
 };
 
 BST::BST() {
 
     root=NULL;
     size=0;
+    it=0;
+    is=0;
+    cs=0;
+    ds=0;
 }
 
 int BST::sizeBST() {
     return size;
 }
-void BST::addStudent(int id, string name, double gpa, string department) {
-    Student studentBST(id,name,gpa,department);
-    BSTNode* newNode= new BSTNode(studentBST);
+int BST::numCS() {
+    return cs;
+}
+int BST::numIS() {
+    return is;
+}int BST::numIT() {
+    return it;
+}int BST::numDS() {
+    return ds;
+}
 
-    if(root==NULL){
-        root = newNode;
-    }
-    else {
-        BSTNode *current = root;
-        while (current != NULL) {
-            if (current->data.getID() > newNode->data.getID()) {
-                if (current->left == NULL) {
-                    current->left = newNode;
-                    break;
-                } else {
-                    current = current->left;
-                }
-            } else if (current->data.getID() < newNode->data.getID()) {
-                if (current->right == NULL) {
-                    current->right = newNode;
-                    break;
-                } else {
-                    current = current->right;
+bool BST::addStudent(int id, string name, double gpa, string department) {
+    if (!search(id) && id >= 0 && id <= 100) {
+        if (department == "CS") {
+            cs++;
+        } else if (department == "DS") {
+            ds++;
+        } else if (department == "IS") {
+            is++;
+        } else if (department == "IT") {
+            it++;
+        }
+        else if((department!="CS")||(department!="IT")||(department!="DS")||(department!="IS")){
+            return false;
+        }
+        else if(gpa<0||gpa>4){
+            return false;
+        }
+
+        Student studentBST(id,name,gpa,department);
+        BSTNode* newNode= new BSTNode(studentBST);
+
+        if(root==NULL){
+            root = newNode;
+        }
+        else {
+            BSTNode *current = root;
+            while (current != NULL) {
+                if (current->data.getID() > newNode->data.getID()) {
+                    if (current->left == NULL) {
+                        current->left = newNode;
+                        break;
+                    } else {
+                        current = current->left;
+                    }
+                } else if (current->data.getID() < newNode->data.getID()) {
+                    if (current->right == NULL) {
+                        current->right = newNode;
+                        break;
+                    } else {
+                        current = current->right;
+                    }
                 }
             }
         }
+
+        size++;
+        return true;
     }
-    size++;
+    else
+        return false;
+
 }
 
 void BST :: removeStudent(int id){
@@ -96,7 +144,15 @@ void BST :: removeStudent(int id){
         else {
             cout << "Student is found." << endl;
             cout<<"["<<current->data.getID()<<", "<<current->data.getName()<<", "<<current->data.getGPA()<<", "<<current->data.getDepartment()<<"]"<<endl;
-
+            if(current->data.getDepartment()=="CS"){
+                cs--;
+            }else if(current->data.getDepartment()=="DS"){
+                ds--;
+            }else if(current->data.getDepartment()=="IS"){
+                is--;
+            }else if(current->data.getDepartment()=="IT"){
+                it--;
+            }
             if (current->left == NULL && current->right == NULL) { // leaf node
                 if (parent == NULL) {
                     root = NULL;
@@ -139,7 +195,7 @@ void BST :: removeStudent(int id){
     }
 }
 
-void BST::search(int id) {
+void BST::searchStudent(int id) {
     if (root == NULL) {
         cout << "BST tree is empty." << endl;
         return;
@@ -161,25 +217,39 @@ void BST::search(int id) {
         return;
     }
 }
+
+bool BST::search(int id) {
+    if (root == NULL) {
+        return false;
+    }
+    else {
+        BSTNode* current = root;
+        while (current != NULL) {
+            if (current->data.getID() == id) {
+                return true;
+            } else if (current->data.getID() > id) {
+                current = current->left;
+            } else {
+                current = current->right;
+            }
+        }
+        return false;
+    }
+}
+
 void BST::printBST(BSTNode *root) {
     if (root != NULL) {
         printBST(root->left);
         cout << "[" << root->data.getID() << ", " << root->data.getName() << ", " << root->data.getGPA() << ", "
              << root->data.getDepartment() << "]" << endl;
-//
-//        cout<< "ID: "<<root->data.getID()<<endl;
-//        cout<< "Name: "<<root->data.getName()<<endl;
-//        cout<< "GPA: "<<root->data.getGPA()<<endl;
-//        cout<< "Department: "<<root->data.getDepartment()<<endl;
         printBST(root->right);
     }
 }
 void BST::printDepartment() {
-    map<string, int> depsFreqency = getDepsFreq();
-    cout << "IT Department contains: " << depsFreqency["IT"] << '\n';
-    cout << "DS Department contains: " << depsFreqency["DS"] << '\n';
-    cout << "CS Department contains: " << depsFreqency["CS"] << '\n';
-    cout << "IS Department contains: " << depsFreqency["IS"] << '\n';
+    cout << "IT Department contains: " << numIT() << '\n';
+    cout << "DS Department contains: " << numDS() << '\n';
+    cout << "CS Department contains: " << numCS() << '\n';
+    cout << "IS Department contains: " << numIS() << '\n';
 }
 
 
@@ -201,43 +271,8 @@ void BST::add_student() {
     cin.ignore();
     cout << "Enter Student Department: ";
     getline(cin, department);
-    addStudent(id, name, gpa, department);
-    editDepsFreqData(department);
-    cout<<"The student is added.\n";
-
-}
-
-void bstMenu() {
-    BST bst; // Create an instance of the BST class
-
-    int choice;
-    while (true) {
-        cout << "Choose one of the following options:" << endl;
-        cout << "1. Add student" << endl;
-        cout << "2. Remove student" << endl;
-        cout << "3. Search student" << endl;
-        cout << "4. Print All (sorted by id)" << endl;
-        cout << "5. Return to main menu" << endl;
-        cout << "Enter your choice (1-5): ";
-        cin >> choice;
-
-        switch (choice) {
-            case 1:
-                bst.add_student();
-                break;
-            case 2:
-                // Code for removing a student
-                break;
-            case 3:
-                // Code for searching a student
-                break;
-            case 4:
-                bst.print(); // Print all students sorted by id
-                break;
-            case 5:
-                return; // Return to main menu
-            default:
-                cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
-        }
-    }
+    if(addStudent(id, name, gpa, department))
+        cout<<"The student is added."<<endl;
+    else
+        cout<<"Wrong Data try again :)"<<endl;
 }
