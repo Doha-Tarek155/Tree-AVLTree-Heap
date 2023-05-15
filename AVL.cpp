@@ -9,8 +9,6 @@ public:
     AVLNode* right;
     int height;
 
-
-
     AVLNode(Student student) : data(student) {
         this->left = NULL;
         this->right = NULL;
@@ -30,8 +28,8 @@ private:
 
 public:
     AVL();
-    void addStudent(int id, string name, double gpa, string department);
-    void add_student();
+    bool addStudent(int id, string name, double gpa, string department);
+    void addstudent();
     void print();
     void printDepartment();
     void removeStudent(int id);
@@ -71,194 +69,6 @@ int AVL::numIS() {
 }
 int AVL::sizeAVL() {
     return size;
-}
-
-bool AVL::search(int id) {
-    if (root == NULL) {
-        return 0;
-    }
-    else {
-        AVLNode* current = root;
-        while (current != NULL) {
-            if (current->data.getID() == id) {
-                return 1;
-            } else if (current->data.getID() > id) {
-                current = current->left;
-            } else {
-                current = current->right;
-            }
-        }
-        return 0;
-    }
-}
-void AVL::printDepartment() {
-
-    cout << "IT Department contains: " << numIT() << '\n';
-    cout << "DS Department contains: " << numDS() << '\n';
-    cout << "CS Department contains: " << numCS() << '\n';
-    cout << "IS Department contains: " << numIS() << '\n';
-}
-
-void AVL::addStudent(int id, string name, double gpa, string department) {
-    if(!search(id)) {
-        if(department=="CS"){
-            cs++;
-        }else if(department=="DS"){
-            ds++;
-        }else if(department=="IS"){
-            is++;
-        }else if(department=="IT"){
-            it++;
-        }
-        Student student(id, name, gpa, department);
-        AVLNode *newNode = new AVLNode(student);
-
-        if (root == NULL) {
-            root = newNode;
-        } else {
-            AVLNode *current = root;
-            while (current != NULL) {
-                if (current->data.getID() > newNode->data.getID()) {
-                    if (current->left == NULL) {
-                        current->left = newNode;
-                        break;
-                    } else {
-                        current = current->left;
-                    }
-                } else if (current->data.getID() < newNode->data.getID()) {
-                    if (current->right == NULL) {
-                        current->right = newNode;
-                        break;
-                    } else {
-                        current = current->right;
-                    }
-                }
-            }
-            root = balance(root);
-        }
-        size++;
-    }
-
-}
-
-void AVL::add_student() {
-    int id;
-    string name, department;
-    double gpa;
-    cout << "Enter Student ID: ";
-    cin >> id;
-    cin.ignore();
-    cout << "Enter Student Name: ";
-    getline(cin, name);
-    cout << "Enter Student GPA: ";
-    cin >> gpa;
-    cin.ignore();
-    cout << "Enter Student Department: ";
-    getline(cin, department);
-    addStudent(id, name, gpa, department);
-
-}
-
-
-void AVL::removeStudent(int id) {
-    if (root == NULL) {
-        cout << "AVL tree is empty." << endl;
-        return;
-    } else {
-        AVLNode* current = root;
-        AVLNode* parent = NULL;
-        bool found = false;
-        while (current != NULL) {
-            if (current->data.getID() == id) {
-                found = true;
-                break;
-            } else if (current->data.getID() > id) {
-                parent = current;
-                current = current->left;
-            } else {
-                parent = current;
-                current = current->right;
-            }
-        }
-        if (!found) {
-            cout << "Student not found." << endl;
-            return;
-        } else {
-            if (current->left == NULL && current->right == NULL) { // leaf node
-                if (parent == NULL) {
-                    root = NULL;
-                } else if (parent->left == current) {
-                    parent->left = NULL;
-                } else {
-                    parent->right = NULL;
-                }
-                delete current;
-            } else if (current->left != NULL && current->right != NULL) { // node with two children
-                AVLNode* successorParent = current;
-                AVLNode* successor = current->right;
-                while (successor->left != NULL) {
-                    successorParent = successor;
-                    successor = successor->left;
-                }
-                current->data = successor->data;
-                if (successorParent->left == successor) {
-                    successorParent->left = successor->right;
-                } else {
-                    successorParent->right = successor->right;
-                }
-                delete successor;
-            } else { // node with one child
-                AVLNode* child = (current->left != NULL) ? current->left : current->right;
-                if (parent == NULL) {
-                    root = child;
-                } else if (parent->left == current) {
-                    parent->left = child;
-                } else {
-                    parent->right = child;
-                }
-                delete current;
-            }
-            cout << "Student is deleted." << endl;
-            size--;
-            root = balance(root);
-        }
-    }
-}
-
-void AVL::searchStudent(int id) {
-    if (root == NULL) {
-        cout << "AVL tree is empty." << endl;
-        return;
-    } else {
-        AVLNode* current = root;
-        while (current != NULL) {
-            if (current->data.getID() == id) {
-                cout << "[" << current->data.getID() << ", " << current->data.getName() << ", " << current->data.getGPA() << ", " << current->data.getDepartment() << "]" << endl;
-                cout << "Student is found." << endl;
-                return;
-            } else if (current->data.getID() > id) {
-                current = current->left;
-            } else {
-                current = current->right;
-            }
-        }
-        cout << "Student not found." << endl;
-        return;
-    }
-}
-
-void AVL::printAVL(AVLNode *root) {
-
-    if (root != NULL) {
-        printAVL(root->left);
-        cout << "[" << root->data.getID() << ", " << root->data.getName() << ", " << root->data.getGPA() << ", "
-             << root->data.getDepartment() << "]" << endl;
-        printAVL(root->right);
-    }
-}
-
-void AVL::print() {
-    printAVL(root);
 }
 
 int AVL::getHeight(AVLNode* node) {
@@ -316,57 +126,212 @@ AVLNode* AVL::balance(AVLNode* node) {
     return node;
 }
 
-void addStudentAVL(){
-    AVL avl;
+bool AVL::addStudent(int id, string name, double gpa, string department) {
+    if (!search(id) && id >= 0 && id <= 100) {
+        if (department == "CS") {
+            cs++;
+        } else if (department == "DS") {
+            ds++;
+        } else if (department == "IS") {
+            is++;
+        } else if (department == "IT") {
+            it++;
+        }
+        else if((department!="CS")||(department!="IT")||(department!="DS")||(department!="IS")){
+            return false;
+        }
+        else if(gpa<0||gpa>4){
+            return false;
+        }
+
+        Student student(id, name, gpa, department);
+        AVLNode *newNode = new AVLNode(student);
+
+        if (root == NULL) {
+            root = newNode;
+        } else {
+            AVLNode *current = root;
+            while (current != NULL) {
+                if (current->data.getID() > newNode->data.getID()) {
+                    if (current->left == NULL) {
+                        current->left = newNode;
+                        break;
+                    } else {
+                        current = current->left;
+                    }
+                } else if (current->data.getID() < newNode->data.getID()) {
+                    if (current->right == NULL) {
+                        current->right = newNode;
+                        break;
+                    } else {
+                        current = current->right;
+                    }
+                }
+            }
+            root = balance(root);
+        }
+        size++;
+        return true;
+    }
+    else
+        return false;
+}
+
+void AVL::removeStudent(int id) {
+    if (root == NULL) {
+        cout << "AVL tree is empty." << endl;
+        return;
+    } else {
+        AVLNode* current = root;
+        AVLNode* parent = NULL;
+        bool found = false;
+        while (current != NULL) {
+            if (current->data.getID() == id) {
+                found = true;
+                break;
+            } else if (current->data.getID() > id) {
+                parent = current;
+                current = current->left;
+            } else {
+                parent = current;
+                current = current->right;
+            }
+        }
+        if (!found) {
+            cout << "Student not found." << endl;
+            return;
+        } else {
+            cout << "Student is found." << endl;
+            cout<<"["<<current->data.getID()<<", "<<current->data.getName()<<", "<<current->data.getGPA()<<", "<<current->data.getDepartment()<<"]"<<endl;
+            if(current->data.getDepartment()=="CS"){
+                cs--;
+            }else if(current->data.getDepartment()=="DS"){
+                ds--;
+            }else if(current->data.getDepartment()=="IS"){
+                is--;
+            }else if(current->data.getDepartment()=="IT"){
+                it--;
+            }
+            if (current->left == NULL && current->right == NULL) { // leaf node
+                if (parent == NULL) {
+                    root = NULL;
+                } else if (parent->left == current) {
+                    parent->left = NULL;
+                } else {
+                    parent->right = NULL;
+                }
+                delete current;
+            } else if (current->left != NULL && current->right != NULL) { // node with two children
+                AVLNode* successorParent = current;
+                AVLNode* successor = current->right;
+                while (successor->left != NULL) {
+                    successorParent = successor;
+                    successor = successor->left;
+                }
+                current->data = successor->data;
+                if (successorParent->left == successor) {
+                    successorParent->left = successor->right;
+                } else {
+                    successorParent->right = successor->right;
+                }
+                delete successor;
+            } else { // node with one child
+                AVLNode* child = (current->left != NULL) ? current->left : current->right;
+                if (parent == NULL) {
+                    root = child;
+                } else if (parent->left == current) {
+                    parent->left = child;
+                } else {
+                    parent->right = child;
+                }
+                delete current;
+            }
+            cout << "Student is deleted." << endl;
+            size--;
+            root = balance(root);
+        }
+    }
+}
+
+void AVL::searchStudent(int id) {
+    if (root == NULL) {
+        cout << "AVL tree is empty." << endl;
+        return;
+    }
+    else {
+        AVLNode* current = root;
+        while (current != NULL) {
+            if (current->data.getID() == id) {
+                cout << "Student is found." << endl;
+                cout << "[" << current->data.getID() << ", " << current->data.getName() << ", " << current->data.getGPA() << ", " << current->data.getDepartment() << "]" << endl;
+                return;
+            } else if (current->data.getID() > id) {
+                current = current->left;
+            } else {
+                current = current->right;
+            }
+        }
+        cout << "Student not found." << endl;
+        return;
+    }
+}
+
+bool AVL::search(int id) {
+    if (root == NULL) {
+        return false;
+    } else {
+        AVLNode* current = root;
+        while (current != NULL) {
+            if (current->data.getID() == id) {
+                return true;
+            } else if (current->data.getID() > id) {
+                current = current->left;
+            } else {
+                current = current->right;
+            }
+        }
+        return false;
+    }
+}
+
+void AVL::printDepartment() {
+    cout << "IT Department contains: " << numIT() << '\n';
+    cout << "DS Department contains: " << numDS() << '\n';
+    cout << "CS Department contains: " << numCS() << '\n';
+    cout << "IS Department contains: " << numIS() << '\n';
+}
+
+
+void AVL::printAVL(AVLNode *root) {
+
+    if (root != NULL) {
+        printAVL(root->left);
+        cout << "[" << root->data.getID() << ", " << root->data.getName() << ", " << root->data.getGPA() << ", "
+             << root->data.getDepartment() << "]" << endl;
+        printAVL(root->right);
+    }
+}
+
+void AVL::print() {
+    printAVL(root);
+}
+
+void AVL::addstudent() {
     int id;
     string name, department;
     double gpa;
-    Student addedStudentData;
     cout << "Enter Student ID: ";
     cin >> id;
-    addedStudentData.setID(id);
+    cin.ignore();
     cout << "Enter Student Name: ";
-    cin >> ws;
     getline(cin, name);
-    addedStudentData.setName(name);
     cout << "Enter Student GPA: ";
     cin >> gpa;
-    addedStudentData.setGPA(gpa);
+    cin.ignore();
     cout << "Enter Student Department: ";
-    cin >> department;
-    editDepsFreqData(department);
-    addedStudentData.setDepartment(department);
-
-//    vector<Student> AVL = readFromFile();
-//    for(auto student: AVL) {
-//        avl.addStudent(student.getID(), student.getName(), student.getGPA(), student.getDepartment());
-//    }
-
-    avl.addStudent(id,name,gpa,department);
-    cout << "The student is added.\n";
+    getline(cin, department);
+    if(addStudent(id, name, gpa, department))
+        cout<<"The student is added."<<endl;
+    else
+        cout<<"Wrong Data try again :)"<<endl;
 }
-
-void removeStudentAVL(){
-    AVL avl;
-    int id;
-    cout << "Enter Student ID: ";
-    cin >> id;
-    avl.removeStudent(id);
-}
-
-void searchStudentAVL(){
-    AVL avl;
-    int id;
-    cout << "Enter Student ID: ";
-    cin >> id;
-    avl.searchStudent(id);
-}
-
-//
-//int main() {
-//    addStudentAVL();
-////    print()
-////    removeStudentAVL();
-////    searchStudentAVL();
-//
-//}
