@@ -1,6 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\Delta Store\Documents\GitHub\Assinment3DS"
-CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
-  CMake 3.23 or higher is required.  You are running version 3.21.1
-
-
--- Configuring incomplete, errors occurred!
+"C:\Program Files\JetBrains\CLion 2022.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.2.4/bin/ninja/win/ninja.exe" -G Ninja -S C:\assigment\Assinment3DS -B C:\assigment\Assinment3DS\cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/assigment/Assinment3DS/cmake-build-debug
