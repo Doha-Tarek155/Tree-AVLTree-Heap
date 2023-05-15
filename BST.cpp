@@ -77,7 +77,7 @@ bool BST::addStudent(int id, string name, double gpa, string department) {
         else if((department!="CS")||(department!="IT")||(department!="DS")||(department!="IS")){
             return false;
         }
-        else if(gpa<0||gpa>4){
+        if(gpa<0||gpa>4){
             return false;
         }
 
